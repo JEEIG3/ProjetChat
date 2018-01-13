@@ -35,5 +35,25 @@ public class asdd {
 			}
 
 	}
+	
+	
+	 public static void insert(String expediteur,String destinataire,String message,String date) throws ClassNotFoundException {
+  	   
+  	   String sql="INSERT INTO `message` ( `expediteur`,  `destinataire`,`message`,dats) VALUES (?,?,?,?);";
+  	   
+  	   try {
+ 			Testcnx.conn();
+ 			prt = Testcnx.conn.prepareStatement(sql);
+ 			prt.setString(1, expediteur);
+ 			prt.setString(2,destinataire);
+ 			prt.setString(3, message);
+ 			prt.setString(4, date);
+ 			rs = prt.executeUpdate();
+ 			Testcnx.conn.close();
+ 			} catch (SQLException e) {
+ 				
+ 				e.printStackTrace();} 
+ 			
+     }
 
 }
