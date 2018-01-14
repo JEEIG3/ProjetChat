@@ -3,6 +3,7 @@ package chat;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import testcnx.asdd;
 import testcnx.user;
 
 
@@ -51,8 +52,18 @@ public class login extends HttpServlet {
 			User.setEmail(request.getParameter("email"));
 			User.setPsw(request.getParameter("psw")); 
  		    
+			 try {
+					asdd.adduser(User);
+				} catch (ClassNotFoundException | SQLException e) {
+					
+					e.printStackTrace();
+				}
+		    }
+				  
 	    
-	    }
+	    
+	    
+	    
 	   
 	    
 	  	       
