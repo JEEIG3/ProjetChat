@@ -2,9 +2,12 @@ package testcnx;
 
 import java.beans.Statement;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.servlet.ServletException;
 
@@ -145,6 +148,18 @@ public class asdd {
         	 Testcnx.conn.close();
         	 return message;
      }
+	 
+	 
+	 public static String  date() {
+    	 Date maintenant1 = new Date(System.currentTimeMillis());
+  		 Calendar cal =new GregorianCalendar();
+  		 int seconde= cal.get(Calendar.SECOND);
+  		 int munite= cal.get(Calendar.MINUTE);
+  		 int heur= cal.get(Calendar.HOUR);
+  		 String dats=""+maintenant1+"/"+heur+":"+munite+":"+seconde;
+        	   
+  		    return dats;
+         }
   	   
 
 
