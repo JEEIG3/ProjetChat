@@ -87,6 +87,36 @@ public class asdd {
         	 Testcnx.conn.close();
         	 return message;
      }
+       
+      
+	 public static String  select2() throws SQLException {
+  	   ResultSet rss;
+  	   String message="";
+  	   
+  	   String sql="select expediteur,message,dats from groups";
+  	  
+        	 try {
+     			
+     			Testcnx.conn();
+     			
+     			prt =Testcnx.conn.prepareStatement(sql);
+              rss = prt.executeQuery();
+                while (rss.next()) {
+                String  ex = rss.getString("expediteur");
+                String   ms = rss.getString("message");
+                String   date = rss.getString("dats"); 
+                 message +=date+":"+"group:"+ex+":"+"  '"+ms+"'"+"<p>";
+               
+                	
+                }
+                
+        	 }catch (ClassNotFoundException e) {
+ 				
+ 				e.printStackTrace();
+ 			}
+        	 Testcnx.conn.close();
+        	 return message;
+     }
      
 
 
