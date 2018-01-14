@@ -3,8 +3,10 @@ package chat;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +21,8 @@ import testcnx.user;
 @WebServlet("/login")
 public class login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	static PreparedStatement prt;
+	static RequestDispatcher req;
 	static PrintWriter out;
 	 
 	public login() {
@@ -52,6 +55,8 @@ public class login extends HttpServlet {
 			User.setEmail(request.getParameter("email"));
 			User.setPsw(request.getParameter("psw")); 
  		    
+			req=request.getRequestDispatcher("servlteMessage");
+ 		    req.forward(request, response);
 			 try {
 					asdd.adduser(User);
 				} catch (ClassNotFoundException | SQLException e) {
