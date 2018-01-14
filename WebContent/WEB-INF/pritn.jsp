@@ -32,7 +32,19 @@
 
 		</fieldset>
 	</form>
+	<p>
 	
+	    <%     
+	        String Ms= (String) request.getAttribute("ms");
+	      	out.println("<h4>"+Ms+"</h4>");
+	      	String Msg= (String) request.getAttribute("msg");
+	      	out.println("<h4>"+Msg+"</h4>");
+
+	       
+	       
+	    %>            
+	
+	</p>
 	
 </body>
 </html>
