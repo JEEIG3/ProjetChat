@@ -69,6 +69,11 @@ public class servlteMessage extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			 
+			 
+			request.setAttribute("ms",ms);
+			request.setAttribute("msg",msg);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/print.jsp").forward(request, response);
 		
 		
 		
