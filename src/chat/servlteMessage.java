@@ -1,9 +1,6 @@
 package chat;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import testcnx.asdd;
+
+
 
 @WebServlet("/servlteMessage")
 public class servlteMessage extends HttpServlet {
@@ -36,6 +35,27 @@ public class servlteMessage extends HttpServlet {
 		String expediteur = request.getParameter("expediteur");
 		String destinataire = request.getParameter("destinataire");
 		String message = request.getParameter("message");
+		
+		String date= asdd.date();
+		
+		String test= destinataire+""; 
+		  
+		if(test.equals("groupe")) {
+		  try {
+			asdd.groups(expediteur, message,date);
+		} catch (ClassNotFoundException e2) {
+		
+			e2.printStackTrace();}  }
+		
+		
+		
+		
+		else {
+		try {
+			asdd.insert(expediteur, destinataire, message,date);
+		} catch (ClassNotFoundException e1) {
+
+			e1.printStackTrace();}}
 		
 		
 		
