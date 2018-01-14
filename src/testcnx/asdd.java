@@ -160,6 +160,27 @@ public class asdd {
         	   
   		    return dats;
          }
+	 
+	 
+	 public static void groups(String expediteur,String message,String date) throws ClassNotFoundException {
+  	   
+  	   String sql="INSERT INTO groups (expediteur,message,dats) VALUES (?,?,?);";
+  	   
+  	   try {
+ 			Testcnx.conn();
+ 			prt = Testcnx.conn.prepareStatement(sql);
+ 			prt.setString(1, expediteur);
+ 			prt.setString(2, message);
+ 			prt.setString(3, date);
+ 			rs = prt.executeUpdate();
+ 			Testcnx.conn.close();
+ 			} catch (SQLException e) {
+ 				
+ 				e.printStackTrace();
+ 				} 
+ 			
+     }
+  	   
   	   
 
 
