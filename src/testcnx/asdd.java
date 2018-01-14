@@ -3,6 +3,7 @@ package testcnx;
 import java.beans.Statement;
 import java.io.IOException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -53,7 +54,43 @@ public class asdd {
  			} catch (SQLException e) {
  				
  				e.printStackTrace();} 
+  	
  			
      }
+	 
+	 
+	 public static String  select(String  destinataire) throws SQLException {
+  	   ResultSet rss;
+  	   String message="";
+  	   
+  	   String sql="select expediteur,message,dats from message where destinataire='"+destinataire+"'";
+  	  
+        	 try {
+     			
+     			Testcnx.conn();
+     			
+     			prt =Testcnx.conn.prepareStatement(sql);
+              rss = prt.executeQuery();
+                while (rss.next()) {
+                String  ex = rss.getString("expediteur");
+                String   ms = rss.getString("message"); 
+                String  date= rss.getString("dats"); 
+                 message +=date+": "+ex+":"+" '"+ms+"'"+"<p>";
+               
+                	
+                }
+                
+        	 }catch (ClassNotFoundException e) {
+ 				
+ 				e.printStackTrace();
+ 			}
+        	 Testcnx.conn.close();
+        	 return message;
+     }
+     
+
+
+
+
 
 }
