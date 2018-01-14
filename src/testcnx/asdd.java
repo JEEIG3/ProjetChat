@@ -120,7 +120,32 @@ public class asdd {
      
 
 
-
+	 public static String  select3(String emails) throws SQLException {
+  	   ResultSet rss;
+  	   String message="";
+  	   
+  	   String sql="SELECT email,psw FROM `utilisateur` WHERE email='"+emails+"'";
+  	  
+        	 try {
+     			
+     			Testcnx.conn();
+     			
+     			prt =Testcnx.conn.prepareStatement(sql);
+              rss = prt.executeQuery();
+                while (rss.next()) {
+                String email = rss.getString("email");
+                String   psw = rss.getString("psw");                      	 
+                 message +=email+":"+psw;
+                }
+                
+        	 }catch (ClassNotFoundException e) {
+ 				
+ 				e.printStackTrace();
+ 			}
+        	 Testcnx.conn.close();
+        	 return message;
+     }
+  	   
 
 
 }
