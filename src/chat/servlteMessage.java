@@ -1,6 +1,8 @@
 package chat;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,6 +58,17 @@ public class servlteMessage extends HttpServlet {
 		} catch (ClassNotFoundException e1) {
 
 			e1.printStackTrace();}}
+		
+		try {
+			ms=asdd.select(expediteur);
+			} catch (SQLException e) {
+				e.printStackTrace();}
+			
+			 try {
+				msg=asdd.select2();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		
 		
 		
