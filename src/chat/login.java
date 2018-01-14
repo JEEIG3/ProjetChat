@@ -1,9 +1,11 @@
 package chat;
 
 
+import java.beans.Statement;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -22,8 +24,11 @@ import testcnx.user;
 public class login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static PreparedStatement prt;
-	static RequestDispatcher req;
+	static Statement st = null;
+	static ResultSet rs = null;
 	static PrintWriter out;
+	static RequestDispatcher req;
+	static String test; 
 	 
 	public login() {
 		super();
@@ -67,6 +72,24 @@ public class login extends HttpServlet {
 				  
 	    
 	    
+	    else {
+	    	   try {
+			 
+	    		   test= asdd.select3(email);
+			
+	    	   } catch (SQLException e) {
+				e.printStackTrace();
+			}
+	    	   if(test.equals(t1+":"+t2)) {
+	    		  req=request.getRequestDispatcher("servlteMessage");
+		 		  req.forward(request, response);   
+	    	   }else
+	    		   out.println("voutre mout de pase ou email incorrect");
+	    	       out.println("hello"+email);
+	    	       out.println(t1+":"+t2);
+	       
+	    	  
+	       }
 	    
 	    
 	   
